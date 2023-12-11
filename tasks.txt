@@ -1,0 +1,52 @@
+Build a website with 3 tiered user system: Super Admin, Account Admin, Agent, and Client.
+
+
+
+superadmin is able to login to admin portal (url = /admin)
+superadmin user and password is hardcoded in the app
+superadmin is able to create account along with the owner user (account admin)
+
+
+
+account admin is able to login to their portal (url = /tenant)
+account admin is able to create multiple agent users
+
+
+
+agent is able to login to their agent portal (url = /tenant/agent)
+agent is able to create multiple client users
+
+
+
+client is able to login to the client portal (url = /tenant/client)
+
+
+
+each user type can only access the url associate to thier type:
+superadmin = /admin
+account admin = /tenant/admin
+agent = /tenant/agent
+client = /tenant/client
+
+
+
+After login a simple welcome message is sufficient.
+
+
+
+stack:
+T3.gg
+Supebase
+Postgres
+tRPC
+
+http://T3.gg
+If you are willing to accept this task, I will go ahead and hire you
+
+
+
+Supabase password: oAiUhmDdie5UxSvX
+
+Commands for supabase
+npx prisma generate
+npx prisma db push

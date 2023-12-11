@@ -1,0 +1,28 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+generator supabase {
+  provider = "prisma-client-js"
+  output   = "@supabase/supabase-js"
+}
+model admin {
+  id String @id @default(cuid())
+  username String @unique
+  password String
+  createdAt DateTime @default(now())
+
+}
+model agent{
+    id String  @id @default(cuid())
+    username String
+    password String
+    createdAt DateTime @default(now())
+}

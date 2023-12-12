@@ -26,3 +26,9 @@ model agent{
     password String
     createdAt DateTime @default(now())
 }
+model client{
+    id String  @id @default(cuid())
+    username String
+    password String
+    createdAt DateTime @default(now())
+}

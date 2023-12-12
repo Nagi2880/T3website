@@ -121,6 +121,13 @@ exports.Prisma.AgentScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.ClientScalarFieldEnum = {
+  id: 'id',
+  username: 'username',
+  password: 'password',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -134,7 +141,8 @@ exports.Prisma.QueryMode = {
 
 exports.Prisma.ModelName = {
   admin: 'admin',
-  agent: 'agent'
+  agent: 'agent',
+  client: 'client'
 };
 
 /**

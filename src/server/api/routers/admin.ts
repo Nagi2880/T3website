@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { createTRPCRouter, publicProcedure } from "../trpc";
+import { createTRPCRouter, publicProcedure} from "../trpc";
 
 export const adminRouter = createTRPCRouter({
     createAdmin: publicProcedure
@@ -8,17 +8,13 @@ export const adminRouter = createTRPCRouter({
             username: z.string(),
             password: z.string(),
         })
-    )
-    .mutation(async ({ ctx, input }) => {
-        try {
-            await ctx.db.admin.create({
+    ).mutation( ({ ctx, input }) => {
+        const admin = ctx.db.admin.create({
                 data:{
                     username: input.username,
                     password: input.password,
                 },
             });
-        }   catch (error){
-            console.log(error)
-        }
-    })
+            return admin
+        }),
 })

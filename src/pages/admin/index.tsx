@@ -1,6 +1,7 @@
-
 import { api } from "~/utils/api";
 import type { FormEvent } from "react";
+import { useState } from 'react'
+import Formlabels from "~/components/formlabels";
 
 export default function Adminhome() {
   const adminMutation = api.admin.createAdmin.useMutation()
@@ -9,7 +10,11 @@ export default function Adminhome() {
     username: "admin",
     password: "1234"
   } 
+
   
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
 
@@ -20,24 +25,25 @@ export default function Adminhome() {
     
     if (username === superAdmin.username && password === superAdmin.password) {
       // Authenticate user as super admin
-      // e.g., set session cookie, store token, update user state
       console.log("Super admin logged in!");
+      setIsLoggedIn(true);
     } else {
       console.error("Invalid username or password.");
   }
 }
   return (
     <div>
+      { isLoggedIn ? (
+        
+        <form onSubmit={adminMutation}>
+          <h1>Welcome</h1>
+        <Formlabels/>
+        </form>
+        ):(
         <form onSubmit={handleSubmit}>
-          
-          <label htmlFor="username">Username</label>
-          <input type="text" name="username" id="username" />
-
-          <label htmlFor="password">Password</label>
-          <input type="password" name="password" id="password" />
-
-          <input type="submit" value='Log in' />
-        </form>      
+          <Formlabels />
+        </form>
+        )}      
     </div>
     );
 }
